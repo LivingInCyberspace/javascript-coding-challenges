@@ -11,6 +11,14 @@ Note: If the number is a multiple of both 3 and 5, only count it once. Also, if 
 ```js
 const solution = number => {
   // Your solution
+  let sum = 0;
+  
+  for (let i = 3; i < number; i++) {
+    if (i % 3 == 0 || i % 5 == 0) {
+      sum += i;
+    }
+  }
+  return sum;
 };
 
 console.log(solution(0)); // 0
@@ -47,6 +55,7 @@ Create a function that takes an integer as an argument and returns "Even" for ev
 ```js
 const even_or_odd = number => {
   // Your solution
+    return number % 2 == 0 ? "Even" : "Odd";
 };
 
 console.log(even_or_odd(0)); // 'Even'
@@ -77,6 +86,28 @@ The clock shows h hours (0 <= h <= 23), m minutes (0 <= m <= 59) and s seconds (
 ```js
 const past = (h, m, s) => {
   // Your solution
+    if (h >= 0) {
+        h = (h * 60 * 60 * 1000);
+    } else {
+        console.log("Please enter valid hours. Exiting...");
+        process.exit(0); 
+    } 
+    
+    if (m >= 0) {
+        m = (m * 60 * 1000)
+    } else {
+        console.log("Please enter valid minutes. Exiting...");
+        process.exit(-1); 
+    } 
+    
+    if (s >= 0) {
+        s *= 1000;
+    } else { 
+        console.log("Please enter valid seconds. Exiting..."); 
+        process.exit(-1); 
+    }
+    
+    return h + m + s;
 };
 
 console.log(past(0, 0, 0)); // 0
@@ -107,6 +138,7 @@ Write a function that given the input string `name`, returns the greeting statem
 ```js
 const greet = name => {
   //Your solution
+    return `Hello, ${name} how are you? doing today?`
 };
 
 console.log(greet('Ryan')); // "Hello, Ryan how are you doing today?"
@@ -135,6 +167,12 @@ The first century spans from the year 1 up to and including the year 100, The se
 ```js
 const century = year => {
   // Your solution
+    if (year < 101) {
+        return 1;
+    } else {
+        let century = year / 100;
+        return Math.ceil(century);
+    }
 };
 
 console.log(century(1705)); // 18
@@ -165,6 +203,12 @@ Nathan loves cycling. Because Nathan knows it is important to stay hydrated, he 
 ```js
 const litres = time => {
   // Your solution
+    if (time >= 0) {
+        return Math.floor(time * 0.5);
+    } else {
+        console.log("Please enter a valid time and try again. Exiting...");
+        process.exit(0);
+    }
 };
 
 console.log(litres(0)); // 0
@@ -197,6 +241,7 @@ Create a function that checks if a number `n` is divisible by two numbers `x` AN
 ```js
 const isDivisible = (n, x, y) => {
   // Your solution
+  return n % x === 0 && n % y === 0;
 };
 
 console.log(isDivisible(3, 3, 4)); // false
